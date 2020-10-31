@@ -41,7 +41,6 @@ app.component('product-display', {
   </div>`,
   data: function () {
     return {
-      cart: 0,
       product: 'Socks',
       brand: 'Vue Mastery',
       selectedVariant: 0,
@@ -57,14 +56,14 @@ app.component('product-display', {
           id: 2235,
           color: 'blue',
           image: './assets/images/socks_blue.jpg',
-          quantity: 0,
+          quantity: 5,
         },
       ],
     };
   },
   methods: {
     addToCart() {
-      this.cart += 1;
+      this.$emit('add-to-cart', this.variants[this.selectedVariant].id);
     },
     updateVariant(index) {
       this.selectedVariant = index;
